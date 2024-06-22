@@ -15,8 +15,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://insta-client-cyan.vercel.app",
-      "https://insta-client-cyan.vercel.app/",
+      "https://insta-client-omega.vercel.app",
+      "https://insta-client-omega.vercel.app/",
     ],
     credentials: true,
     methods: "*",
@@ -34,8 +34,8 @@ const io = new Server(http, {
   cors: {
     origin: [
       "http://localhost:3000",
-      "https://insta-client-cyan.vercel.app",
-      "https://insta-client-cyan.vercel.app/",
+      "https://insta-client-omega.vercel.app",
+      "https://insta-client-omega.vercel.app/",
     ],
     credentials: true,
     methods: "*",
