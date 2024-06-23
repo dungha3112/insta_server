@@ -17,8 +17,8 @@ app.use(express_1.default.urlencoded({ extended: false }));
 app.use((0, cors_1.default)({
     origin: [
         "http://localhost:3000",
-        "https://insta-client-omega.vercel.app",
-        "https://insta-client-omega.vercel.app/",
+        "https://insta-client-6v4r.onrender.com",
+        "https://insta-client-6v4r.onrender.com/",
     ],
     credentials: true,
     methods: "*",
@@ -33,8 +33,8 @@ const io = new socket_io_1.Server(http, {
     cors: {
         origin: [
             "http://localhost:3000",
-            "https://insta-client-omega.vercel.app",
-            "https://insta-client-omega.vercel.app/",
+            "https://insta-client-6v4r.onrender.com",
+            "https://insta-client-6v4r.onrender.com/",
         ],
         credentials: true,
         methods: "*",
