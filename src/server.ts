@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
@@ -6,8 +6,17 @@ import ConnectDB from "./configs/connectBD";
 import routes from "./routers";
 
 import { PeerServer } from "peer";
+import path from "path";
 
 const app = express();
+const buildPath = path.join(__dirname, "build");
+
+app.use(express.static(buildPath));
+
+app.get("*", (req: Request, res: Response) => {
+  res.sendFile(path.join(buildPath, "index.html"));
+});
+
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

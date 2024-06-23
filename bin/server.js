@@ -10,7 +10,13 @@ const morgan_1 = __importDefault(require("morgan"));
 const connectBD_1 = __importDefault(require("./configs/connectBD"));
 const routers_1 = __importDefault(require("./routers"));
 const peer_1 = require("peer");
+const path_1 = __importDefault(require("path"));
 const app = (0, express_1.default)();
+const buildPath = path_1.default.join(__dirname, "build");
+app.use(express_1.default.static(buildPath));
+app.get("*", (req, res) => {
+    res.sendFile(path_1.default.join(buildPath, "index.html"));
+});
 app.use((0, morgan_1.default)("dev"));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
