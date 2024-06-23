@@ -13,13 +13,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://insta-client-6v4r.onrender.com",
-      "https://insta-client-6v4r.onrender.com/",
-    ],
+    origin: ["http://localhost:3000", "https://insta-client-6v4r.onrender.com"],
     credentials: true,
     methods: "*",
+    allowedHeaders: ["Content-Type", "Authorization", ""],
   })
 );
 app.use(cookieParser());
@@ -32,13 +29,10 @@ const http = createServer(app);
 
 const io = new Server(http, {
   cors: {
-    origin: [
-      "http://localhost:3000",
-      "https://insta-client-6v4r.onrender.com",
-      "https://insta-client-6v4r.onrender.com/",
-    ],
+    origin: ["http://localhost:3000", "https://insta-client-6v4r.onrender.com"],
     credentials: true,
     methods: "*",
+    allowedHeaders: ["Content-Type", "Authorization", ""],
   },
 });
 ConnectDB();
