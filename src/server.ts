@@ -1,19 +1,13 @@
-import express, { Request, Response } from "express";
-import cors from "cors";
 import cookieParser from "cookie-parser";
+import cors from "cors";
+import express from "express";
 import morgan from "morgan";
 import ConnectDB from "./configs/connectBD";
 import routes from "./routers";
 
 import { PeerServer } from "peer";
-import path from "path";
 
 const app = express();
-app.use(express.static(path.join(__dirname, "client/build")));
-
-app.get("*", (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, "client/build", "index.html"));
-});
 
 app.use(morgan("dev"));
 app.use(express.json());

@@ -3,19 +3,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const cors_1 = __importDefault(require("cors"));
+const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const connectBD_1 = __importDefault(require("./configs/connectBD"));
 const routers_1 = __importDefault(require("./routers"));
 const peer_1 = require("peer");
-const path_1 = __importDefault(require("path"));
 const app = (0, express_1.default)();
-app.use(express_1.default.static(path_1.default.join(__dirname, "client/build")));
-app.get("*", (req, res) => {
-    res.sendFile(path_1.default.join(__dirname, "client/build", "index.html"));
-});
 app.use((0, morgan_1.default)("dev"));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
