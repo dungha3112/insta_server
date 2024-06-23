@@ -15,7 +15,11 @@ app.use((0, morgan_1.default)("dev"));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use((0, cors_1.default)({
-    origin: ["http://localhost:3000", "https://insta-client-6v4r.onrender.com"],
+    origin: [
+        "http://localhost:3000",
+        "https://insta-client-6v4r.onrender.com",
+        "https://insta-client-six.vercel.app",
+    ],
     credentials: true,
     methods: ["GET", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -28,7 +32,11 @@ const socketServer_1 = __importDefault(require("./socketServer"));
 const http = (0, http_1.createServer)(app);
 const io = new socket_io_1.Server(http, {
     cors: {
-        origin: ["http://localhost:3000", "https://insta-client-6v4r.onrender.com"],
+        origin: [
+            "http://localhost:3000",
+            "https://insta-client-6v4r.onrender.com",
+            "https://insta-client-six.vercel.app/",
+        ],
         credentials: true,
         methods: ["GET", "PUT", "PATCH", "DELETE"],
         allowedHeaders: ["Content-Type", "Authorization"],
