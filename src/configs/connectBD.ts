@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { MongooseOptions } from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
 

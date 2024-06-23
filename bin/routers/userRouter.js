@@ -1,0 +1,23 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_1 = __importDefault(require("../middlewares/auth"));
+const userCtrl_1 = __importDefault(require("../controllers/userCtrl"));
+const router = (0, express_1.Router)();
+router.get("/search", auth_1.default, userCtrl_1.default.searchUser);
+router.get("/suggestions", auth_1.default, userCtrl_1.default.getSuggestionsUser);
+router.put("/add-history-search/:userId", auth_1.default, userCtrl_1.default.addHistorySearch);
+router.put("/history-delete/:userId", auth_1.default, userCtrl_1.default.deleteHistorySearchByUserId);
+router.get("/:userId/followers", auth_1.default, userCtrl_1.default.getFollowersByUserId);
+router.get("/:userId/following", auth_1.default, userCtrl_1.default.getFollowingByUserId);
+router.patch("/:id/follow", auth_1.default, userCtrl_1.default.follow);
+router.patch("/:id/unfollow", auth_1.default, userCtrl_1.default.unfollow);
+router.get("/history-search", auth_1.default, userCtrl_1.default.getHistorySearch);
+router.delete("/history-search", auth_1.default, userCtrl_1.default.deleteAllHistorySearch);
+router.get("/:userId", auth_1.default, userCtrl_1.default.getUserById);
+router.put("/update-profile", auth_1.default, userCtrl_1.default.updateProfile);
+router.put("/update-password", auth_1.default, userCtrl_1.default.updatePassword);
+exports.default = router;

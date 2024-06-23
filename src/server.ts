@@ -41,6 +41,7 @@ const io = new Server(http, {
     methods: "*",
   },
 });
+ConnectDB();
 
 io.on("connection", (socket: Socket) => {
   SocketServer(socket);
@@ -48,8 +49,6 @@ io.on("connection", (socket: Socket) => {
 
 // Create Peer Server
 PeerServer({ port: 3001, path: "/" });
-
-ConnectDB();
 
 app.use("/api/auth", routes.authRouter);
 app.use("/api/user", routes.userRouter);

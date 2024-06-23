@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es2016",
-    "lib": ["es2019"],
+    "target": "ES2020",
+    "lib": ["ESNext"],
     "module": "commonjs",
+    "moduleResolution": "node",
     "rootDir": "src",
     "outDir": "./bin",
     "esModuleInterop": true,
@@ -10,5 +11,7 @@
     "strict": true,
     "noImplicitAny": true,
     "skipLibCheck": true
-  }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }
