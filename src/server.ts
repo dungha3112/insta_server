@@ -9,12 +9,10 @@ import { PeerServer } from "peer";
 import path from "path";
 
 const app = express();
-const buildPath = path.join(__dirname, "build");
-
-app.use(express.static(buildPath));
+app.use(express.static(path.join(__dirname, "client/build")));
 
 app.get("*", (req: Request, res: Response) => {
-  res.sendFile(path.join(buildPath, "index.html"));
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
 
 app.use(morgan("dev"));

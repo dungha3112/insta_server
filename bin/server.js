@@ -12,10 +12,9 @@ const routers_1 = __importDefault(require("./routers"));
 const peer_1 = require("peer");
 const path_1 = __importDefault(require("path"));
 const app = (0, express_1.default)();
-const buildPath = path_1.default.join(__dirname, "build");
-app.use(express_1.default.static(buildPath));
+app.use(express_1.default.static(path_1.default.join(__dirname, "client/build")));
 app.get("*", (req, res) => {
-    res.sendFile(path_1.default.join(buildPath, "index.html"));
+    res.sendFile(path_1.default.join(__dirname, "client/build", "index.html"));
 });
 app.use((0, morgan_1.default)("dev"));
 app.use(express_1.default.json());
