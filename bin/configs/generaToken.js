@@ -18,10 +18,9 @@ const generateRefreshToken = async (payload, res) => {
     res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
         secure: true,
-        sameSite: "none",
+        sameSite: "strict",
         maxAge: 30 * 7 * 24 * 60 * 60 * 1000,
-        domain: "https://insta-server-6bys.onrender.com",
-        path: "/auth/api/refresh_token",
+        path: "/",
     });
     return refreshToken;
 };
