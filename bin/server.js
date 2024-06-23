@@ -35,7 +35,7 @@ const io = new socket_io_1.Server(http, {
         origin: [
             "http://localhost:3000",
             "https://insta-client-6v4r.onrender.com",
-            "https://insta-client-six.vercel.app/",
+            "https://insta-client-six.vercel.app",
         ],
         credentials: true,
         methods: ["GET", "PUT", "PATCH", "DELETE"],
