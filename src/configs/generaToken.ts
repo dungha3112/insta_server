@@ -18,8 +18,10 @@ export const generateRefreshToken = async (payload: object, res: Response) => {
 
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
-    // path: "/auth/api/refresh_token",
+    path: "/auth/api/refresh_token",
+    secure: true,
     maxAge: 30 * 7 * 24 * 60 * 60 * 1000,
+    sameSite: "strict",
   });
 
   return refreshToken;
