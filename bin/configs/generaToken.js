@@ -18,7 +18,7 @@ const generateRefreshToken = async (payload, res) => {
     res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
         secure: true,
-        sameSite: "strict",
+        sameSite: "none",
         maxAge: 30 * 7 * 24 * 60 * 60 * 1000,
         path: "/",
     });
