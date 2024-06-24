@@ -21,10 +21,17 @@ app.use((0, cors_1.default)({
         "https://insta-client-one.vercel.app",
     ],
     credentials: true,
-    methods: ["GET", "PUT", "PATCH", "DELETE"],
+    methods: ["GET", "PUT", "PATCH", "DELETE", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
 app.use((0, cookie_parser_1.default)());
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", req.headers.origin);
+    res.header("Access-Control-Allow-Credentials", "true");
+    res.header("Access-Control-Allow-Methods", "GET,PUT,PATCH,POST,DELETE");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    next();
+});
 // socket
 const http_1 = require("http");
 const socket_io_1 = require("socket.io");
@@ -38,7 +45,7 @@ const io = new socket_io_1.Server(http, {
             "https://insta-client-one.vercel.app",
         ],
         credentials: true,
-        methods: ["GET", "PUT", "PATCH", "DELETE"],
+        methods: ["GET", "PUT", "PATCH", "DELETE", "POST"],
         allowedHeaders: ["Content-Type", "Authorization"],
     },
 });

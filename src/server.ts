@@ -1,6 +1,6 @@
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import express from "express";
+import express, { NextFunction, Response } from "express";
 import morgan from "morgan";
 import ConnectDB from "./configs/connectBD";
 import routes from "./routers";
@@ -20,16 +20,23 @@ app.use(
       "https://insta-client-one.vercel.app",
     ],
     credentials: true,
-    methods: ["GET", "PUT", "PATCH", "DELETE"],
+    methods: ["GET", "PUT", "PATCH", "DELETE", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 app.use(cookieParser());
-
+app.use((req: IReqAuth, res: Response, next: NextFunction) => {
+  res.header("Access-Control-Allow-Origin", req.headers.origin);
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,PATCH,POST,DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
 // socket
 import { createServer } from "http";
 import { Server, Socket } from "socket.io";
 import SocketServer from "./socketServer";
+import { IReqAuth } from "./configs/interfaces";
 const http = createServer(app);
 
 const io = new Server(http, {
@@ -40,7 +47,7 @@ const io = new Server(http, {
       "https://insta-client-one.vercel.app",
     ],
     credentials: true,
-    methods: ["GET", "PUT", "PATCH", "DELETE"],
+    methods: ["GET", "PUT", "PATCH", "DELETE", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   },
 });
