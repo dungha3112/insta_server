@@ -148,6 +148,7 @@ const SocketServer = (socket) => {
     });
     // Call
     socket.on("callUser", (data) => {
+        console.log(data);
         users = EditData(users, data.sender, data.recipient);
         const client = users.find((user) => user.id === data.recipient);
         if (client) {

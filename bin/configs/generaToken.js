@@ -15,13 +15,14 @@ const generateRefreshToken = async (payload, res) => {
     const refreshToken = await jsonwebtoken_1.default.sign(payload, String(process.env.REFRESH_TOKEN_SECRET), {
         expiresIn: "30d",
     });
-    res.cookie("refreshToken", refreshToken, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "none",
-        maxAge: 30 * 7 * 24 * 60 * 60 * 1000,
-        path: "/",
-    });
+    res.setHeader("Set-Cookie", `refreshToken=${refreshToken}; SameSite=None; Secure=true; maxAge= 30 * 7 * 24 * 60 * 60 * 1000; path=/; `);
+    // res.cookie("refreshToken", refreshToken, {
+    //   httpOnly: true,
+    //   secure: true,
+    //   sameSite: "none",
+    //   maxAge: 30 * 7 * 24 * 60 * 60 * 1000,
+    //   path: "/",
+    // });
     return refreshToken;
 };
 exports.generateRefreshToken = generateRefreshToken;
