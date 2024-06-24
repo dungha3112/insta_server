@@ -15,14 +15,18 @@ export const generateRefreshToken = async (payload: object, res: Response) => {
       expiresIn: "30d",
     }
   );
+  res.setHeader(
+    "Set-Cookie",
+    `refreshToken=${refreshToken}; SameSite=None; Secure=true; maxAge= 30 * 7 * 24 * 60 * 60 * 1000; path=/; `
+  );
 
-  res.cookie("refreshToken", refreshToken, {
-    httpOnly: true,
-    secure: true,
-    sameSite: "none",
-    maxAge: 30 * 7 * 24 * 60 * 60 * 1000,
-    path: "/",
-  });
+  // res.cookie("refreshToken", refreshToken, {
+  //   httpOnly: true,
+  //   secure: true,
+  //   sameSite: "none",
+  //   maxAge: 30 * 7 * 24 * 60 * 60 * 1000,
+  //   path: "/",
+  // });
 
   return refreshToken;
 };
