@@ -19,9 +19,7 @@ export const generateRefreshToken = async (payload: object, res: Response) => {
   res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
     secure: true,
-    sameSite: "none",
-    path: "/api/auth/refresh_token",
-    domain: "https://insta-server-durd.onrender.com",
+    sameSite: "lax",
     maxAge: 30 * 7 * 24 * 60 * 60 * 1000,
   });
 
