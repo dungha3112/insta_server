@@ -17,7 +17,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://insta-client-6v4r.onrender.com",
-      "https://insta-client-one.vercel.app",
+      "https://insta-client-six.vercel.app",
     ],
     credentials: true,
     methods: ["GET", "PUT", "PATCH", "DELETE", "POST"],
@@ -44,7 +44,7 @@ const io = new Server(http, {
     origin: [
       "http://localhost:3000",
       "https://insta-client-6v4r.onrender.com",
-      "https://insta-client-one.vercel.app",
+      "https://insta-client-six.vercel.app",
     ],
     credentials: true,
     methods: ["GET", "PUT", "PATCH", "DELETE", "POST"],

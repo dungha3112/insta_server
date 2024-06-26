@@ -20,7 +20,7 @@ const generateRefreshToken = async (payload, res) => {
         secure: true,
         sameSite: "none",
         path: "/api/auth/refresh_token",
-        domain: "https://insta-server-6bys.onrender.com",
+        domain: "https://insta-server-durd.onrender.com",
         maxAge: 30 * 7 * 24 * 60 * 60 * 1000,
     });
     return refreshToken;
