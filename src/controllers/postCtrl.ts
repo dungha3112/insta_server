@@ -25,6 +25,10 @@ class postCtrl {
   async createPost(req: IReqAuth, res: Response) {
     try {
       const { content, images } = <IPost>req.body;
+      if (images?.length === 0)
+        return res.status(400).json({ msg: "Please add image." });
+      if (content.length === 0)
+        return res.status(400).json({ msg: "Please add content." });
 
       const newPost = new PostModel({ content, images, user: req.user?._id });
 
@@ -76,6 +80,10 @@ class postCtrl {
   async updatePost(req: IReqAuth, res: Response) {
     try {
       const { content, images } = <IPost>req.body;
+      if (images?.length === 0)
+        return res.status(400).json({ msg: "Please add image." });
+      if (content.length === 0)
+        return res.status(400).json({ msg: "Please add content." });
 
       const checkPost = await PostModel.findOne({
         _id: req.params.postId,

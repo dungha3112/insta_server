@@ -23,6 +23,10 @@ class postCtrl {
     async createPost(req, res) {
         try {
             const { content, images } = req.body;
+            if (images?.length === 0)
+                return res.status(400).json({ msg: "Please add image." });
+            if (content.length === 0)
+                return res.status(400).json({ msg: "Please add content." });
             const newPost = new postModel_1.default({ content, images, user: req.user?._id });
             await newPost.save();
             res.status(200).json({
@@ -67,6 +71,10 @@ class postCtrl {
     async updatePost(req, res) {
         try {
             const { content, images } = req.body;
+            if (images?.length === 0)
+                return res.status(400).json({ msg: "Please add image." });
+            if (content.length === 0)
+                return res.status(400).json({ msg: "Please add content." });
             const checkPost = await postModel_1.default.findOne({
                 _id: req.params.postId,
                 user: req.user?._id,
